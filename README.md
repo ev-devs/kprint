@@ -8,8 +8,8 @@ This software was developed for the [`EPSON TM-T88IV`](http://www.epson.com.sg/e
 # Installation
 
     $ git clone https://github.com/evdevs/kprint   
-    $ cd kprint   
-    $ pip install -r requirements.txt   
+    $ cd kprint
+    $ sudo ./install.sh
   
 # Usage
 
