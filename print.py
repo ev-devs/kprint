@@ -4,10 +4,10 @@ from Transaction import Transaction
 def main():
 
 	if len(sys.argv) != 2:
-		print "We only need the guid to print, too many or too few arguments given"
+		print "too many or too few arguments given, only pass the guid"
+		sys.exit()
 
-	cur_trans = Transaction(sys.argv[1])
-	cur_trans.doEverything()
+	Transaction(sys.argv[1]).doEverything()
 
 main()
 
