@@ -1,47 +1,15 @@
-#!/usr/bin/python
-import pymongo
 import sys
-import json 
-from escpos.printer import Usb
-from pymongo import MongoClient
-from bson import BSON
-from bson import json_util
+from Transaction import Transaction
 
+def main():
 
-client = MongoClient('localhost', 27017)
-db = client.transactions
-collection = db.transactions
-guid = str(sys.argv[1])
-cur_trans = collection.find_one({"guid": guid } )
-cur_trans =  json.dumps(cur_trans, sort_keys=True, indent=4, default=json_util.default)
-cur_trans = json.loads(cur_trans)
+	if len(sys.argv) != 2:
+		print "We only need the guid to print, too many or too few arguments given"
 
-class Transaction:
-	
-	def __init__(self):
-		self.rawJson = ""
-		
-	def printCashes(self):
-		test = ""
-		
-	def printCards(self):
-		test = ""
+	cur_trans = Transaction(sys.argv[1])
+	cur_trans.doEverything()
 
-for key in cur_trans:
-	if key == "guid":
-		print cur_trans[key]
-
-
-def printCashes(arr):
-	
-	
-def printCards(arr):
-	
-
-
-
-#print cur_trans
-
+main()
 
 
 barcode_num = "1234567890123"
