@@ -69,12 +69,20 @@ class Transaction:
 
 
     def parseCards(self, cardsArr):
-        #cardsDumpJSON = json.dumps(cardsObj, sort_keys=True, indent=4, default=json_util.default)
-        #cardsLoadJSON = json.loads(cardsDumpJSON)
+        cardsDumpJSON = json.dumps(cardsArr[0], sort_keys=True, indent=4, default=json_util.default)
+        cardsLoadJSON = json.loads(cardsDumpJSON)
+
+        newCardsArr = []
 
         #for key in cardsArr:
         #    print cardsArr[key]
-        print json.dumps(cardsArr[0], sort_keys=True, indent=4, default=json_util.default)
+        #print json.dumps(cardsArr[0], sort_keys=True, indent=4, default=json_util.default)
+
+        tempCard =
+        for key in cardsLoadJSON:
+            if key == "amount":
+
+            print cardsLoadJSON[key]
 
 
 
