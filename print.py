@@ -1,4 +1,5 @@
 import sys
+import os
 from escpos.printer import Usb
 
 #with open('reciepts.txt') as fp
@@ -20,7 +21,9 @@ itemList =[item1,item2, item3]
 """ Seiko Epson Corp. Receipt Printer M129 Definitions (EPSON TM-T88IV) """
 p = Usb(0x04b8,0x0202,0)
 p.set("Center")
-p.image("logo.jpg")
+
+p.image( os.path.dirname(os.path.realpath(__file__)) + "/logo.jpg")
+
 p.text("\nDate: 08/11/16 ")
 p.text("Time: 3:43\n")
 p.barcode(barcode_num, "EAN13")
