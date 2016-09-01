@@ -1,24 +1,28 @@
-date, Thu Sep 01 2016 10:26:07 GMT-0700 (PDT)
-guid, 46c4c81d-fb85-4d99-8588-9687810abd9d
+date, Thu Sep 01 2016 15:06:59 GMT-0700 (PDT)
+guid, 28fddf9d-5b55-46c1-b277-a8a2536a1d49
 city, WOODRIDGE
 state, IL
-recieptId, undefined
+receiptId, 200002767619
 leader,  Alonso y Hilda  Hernandez
-subtotal, 86
+cashier, Walid Najar
+subtotal, 357
 tax, 0
-total,86
+total,357
 payments, 1
+eventType, undefined
 
 
 ItemsBegin
-101 Cool Magic Tricks,10,8
-10 Little Penguins Sticker Activity Book,3,2
+!WOW!,10,15
+100 days of Weight Loss,15,10
+La esposa virtuosa - bolsillo,3,9
+8000 Things You Should Know,3,10
 ItemsEnd
 
 BeginCashes
 EndCashes
 
 BeginCards
-Harambe,0965,RUELAS/ JUAN              ,Harambe,4QYI7Q,60007343284
+Harambe,0965,RUELAS/ JUAN              ,YBW5MC,60007350989
 EndCards
 

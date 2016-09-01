@@ -2,6 +2,8 @@ import sys
 import os
 from escpos.printer import Usb
 from escpos.printer import Dummy, Serial
+import locale
+locale.setlocale( locale.LC_ALL, '' )
 
 with open(os.path.dirname(os.path.realpath(__file__)) + "/receipt.txt") as fp:
 
@@ -19,7 +21,8 @@ with open(os.path.dirname(os.path.realpath(__file__)) + "/receipt.txt") as fp:
 		current_line = line.strip().split(',')
 
 		if current_line[0] == "date":
-			date = current_line[1]
+			date = current_line[1].split(' ')
+			date = date[0] + " " + date[1] + " " + date[2]+ " " + date[3]+ " " + date[4]
 		if current_line[0] == 'guid':
 			guid = current_line[1]
 
@@ -28,20 +31,23 @@ with open(os.path.dirname(os.path.realpath(__file__)) + "/receipt.txt") as fp:
 			city = current_line[1]
 		if current_line[0] == "state":
 			state = current_line[1]
-		if current_line[0] == "recieptId":
-			recieptId = current_line[1]
+		if current_line[0] == "receiptId":
+			receiptId = current_line[1]
 
 		if current_line[0] == "leader":
 			leader = current_line[1]
-
+		if current_line[0] == "cashier":
+			cashier = current_line[1]
 		if current_line[0] == "subtotal":
 			subtotal = current_line[1]
 		if current_line[0] == "tax":
-			tax = subtotal[1]
+			tax = current_line[1]
 		if current_line[0] == "total":
 			total = current_line[1]
 		if current_line[0] == "payments":
 			payments = current_line[1]
+        if current_line[0] == "eventType":
+            eventType = current_line[1]
 
 
 		if current_line[0] == "ItemsBegin":
@@ -66,15 +72,44 @@ with open(os.path.dirname(os.path.realpath(__file__)) + "/receipt.txt") as fp:
 		#print current_line
 
 
-barcode_num = guid
-event = "Seminario: Los Angeles, CA"
-date = "Date:"
-time = "Time:"
-leader = "Lider: "
-item1 = "Como ganase a la gent...     1       14.00"
-item2 = "La magia de pensar en...     1       10.00"
-item3 = "El lado positivo de e...     1       14.00"
-itemList = [item1,item2, item3]
+def trimName(str):
+    if len(str) > 19 :
+        while len(str) is not 19:
+            str = str[:-1]
+            if str[len(str) - 1] == " ":
+                str = str[:-1] + "."
+    if len(str) < 19:
+        while len(str) is not 19:
+            str = str + "."
+    return str + "...   "
+
+
+def trimQty(str):
+    while len(str) is not 5:
+        str = str + " "
+    return str + "   "
+
+def trimPrice(str):
+    return locale.currency( float(str) )
+
+
+event =   "        Seminario: " + city.strip() + ", " + state.strip()
+leader =  "        Lider:     " + leader.strip()
+cashier = "        Cajero:    " + cashier.strip()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 """ Seiko Epson Corp. Receipt Printer M129 Definitions (EPSON TM-T88IV) """
 p = Usb(0x04b8,0x0202,0)
@@ -82,24 +117,32 @@ p.set("Center")
 
 p.image( os.path.dirname(os.path.realpath(__file__)) + "/logo.jpg")
 
-p.text("\nDate: 08/11/16 ")
-p.text("Time: 3:43\n")
-#p.barcode("{B012ABCDabcd" + "1234567891", "CODE128", function_type="B", width=2, font="B")
-p.barcode("200002687132", "EAN13")
-
+p.text(date + "\n")
+p.barcode( receiptId.strip() , "EAN13")
 p.text("\n")
-p.text(event + "\n")
-p.text(leader + "Juan and Alicia Ruelas\n\n")
-p.set("left")
-p.text("Item\t                  Qnt       Price\n")
 
-for x in range(len(itemList)):
-	p.text(itemList[x] + "\n")
+p.set("left")
+p.text(event + "\n")
+p.text(leader + "\n")
+p.text(cashier + "\n")
+p.text("\n")
+
+
+p.set("left")
+
+#				22		       3   4   3   5
+#       1234567890123456789011   1234     12345
+p.text("Item                     Qnt     Price\n")
+#       Items[x][0]              Items[x][1] + " " + Items[x][2] + "\n")
+
+for x in range(len(Items)):
+	p.text( trimName( Items[x][0] )  + trimQty( Items[x][1] ) + trimPrice( Items[x][2] ) + "\n")
 
 p.set("right")
 p.text("\n\n\n")
-p.text("Tax:   5.25\n")
-p.text("Total:   43.25\n")
+p.text("Tax: " + tax + "\n")
+#p.text("Total: "  \n")
+
 p.text("Cash Payment:   100.00\n")
 p.text("Change:   56.75\n")
 p.set("Center", "A","B")

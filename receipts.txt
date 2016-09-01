@@ -1,0 +1,24 @@
+date, Thu Sep 01 2016 11:56:01 GMT-0700 (PDT)
+guid, 70e5f74d-934b-4183-aee9-645c74ab9d27
+city, WOODRIDGE
+state, IL
+receiptId, 200002756162
+leader,  Juan y Edith Jaimes
+cashier, Molovi Subotmanigga
+subtotal, 144
+tax, 0
+total,144
+payments, 1
+
+
+ItemsBegin
+101 Cool Science Experiments ,18,8
+ItemsEnd
+
+BeginCashes
+EndCashes
+
+BeginCards
+Harambe,1009,RUELAS/JUAN G             ,79GMLQ,60007346320
+EndCards
+
