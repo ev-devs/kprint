@@ -1,0 +1,24 @@
+date, Thu Sep 01 2016 10:26:07 GMT-0700 (PDT)
+guid, 46c4c81d-fb85-4d99-8588-9687810abd9d
+city, WOODRIDGE
+state, IL
+recieptId, undefined
+leader,  Alonso y Hilda  Hernandez
+subtotal, 86
+tax, 0
+total,86
+payments, 1
+
+
+ItemsBegin
+101 Cool Magic Tricks,10,8
+10 Little Penguins Sticker Activity Book,3,2
+ItemsEnd
+
+BeginCashes
+EndCashes
+
+BeginCards
+Harambe,0965,RUELAS/ JUAN              ,Harambe,4QYI7Q,60007343284
+EndCards
+

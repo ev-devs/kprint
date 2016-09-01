@@ -3,7 +3,7 @@ import os
 from escpos.printer import Usb
 from escpos.printer import Dummy, Serial
 
-with open('reciepts.txt') as fp:
+with open(os.path.dirname(os.path.realpath(__file__)) + "/receipt.txt") as fp:
 
 	Items = []
 	Cards = []
@@ -85,7 +85,7 @@ p.image( os.path.dirname(os.path.realpath(__file__)) + "/logo.jpg")
 p.text("\nDate: 08/11/16 ")
 p.text("Time: 3:43\n")
 #p.barcode("{B012ABCDabcd" + "1234567891", "CODE128", function_type="B", width=2, font="B")
-p.barcode(barcode_num, "CODE39" , function_type="B")
+p.barcode("200002687132", "EAN13")
 
 p.text("\n")
 p.text(event + "\n")
