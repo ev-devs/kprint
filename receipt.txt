@@ -1,28 +1,32 @@
-date, Thu Sep 01 2016 15:06:59 GMT-0700 (PDT)
-guid, 28fddf9d-5b55-46c1-b277-a8a2536a1d49
+date, Thu Sep 01 2016 17:27:40 GMT-0700 (PDT)
+guid, 1ef4c291-c736-4164-94b7-188152082918
 city, WOODRIDGE
 state, IL
-receiptId, 200002767619
+receiptId, 200002776061
 leader,  Alonso y Hilda  Hernandez
 cashier, Walid Najar
-subtotal, 357
+subtotal, 114.1
 tax, 0
-total,357
-payments, 1
+total,114.1
+payments, 3
 eventType, undefined
+isEnglish, undefined
 
 
 ItemsBegin
-!WOW!,10,15
-100 days of Weight Loss,15,10
-La esposa virtuosa - bolsillo,3,9
-8000 Things You Should Know,3,10
+10 Little Penguins Sticker Activity Book,12,2
+10 Strategic Formulas - audio,2,15
+!WOW!,2,15
+201 Hacedor Clave Folleto,2,0.05
+123 Puzzle+Book (Contains Jumbo 30 Piece Puzzle),3,10
 ItemsEnd
 
 BeginCashes
+10,0
 EndCashes
 
 BeginCards
-Harambe,0965,RUELAS/ JUAN              ,YBW5MC,60007350989
+Harambe,0965,RUELAS/ JUAN              ,DONSC9,60007353386,40
+Harambe,1009,RUELAS/JUAN G             ,55JOFF,60007353436,64.1
 EndCards
 
