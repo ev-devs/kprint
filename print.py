@@ -2,7 +2,7 @@ import sys
 import os
 from escpos.printer import Usb
 from escpos.printer import Dummy, Serial
-from escpos import *
+#from escpos import *
 import locale
 locale.setlocale( locale.LC_ALL, '' )
 
