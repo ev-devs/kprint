@@ -205,10 +205,18 @@ def printSpanish(date, guid, city, state, receiptId, leader, cashier, subtotal, 
             p.text(cardStr)
 
             p.set("center")
+
+            print "RAW STRING=========="
             print card[7]
-            imgData = r''.join( card[7] )
+            print "\n\n\n\n"
+
+            imgData = r''.join( card[7].strip().strip("\n") )
             imgData = "%r" % imgData
+
+            print "MODFIED STRING======================"
             print imgData
+            print "\n\n\n\n"
+
             p.image( imgData.encode('base64') )
 
     if len(Cashes) > 0:
