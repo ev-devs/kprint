@@ -2,6 +2,7 @@ import sys
 import os
 from escpos.printer import Usb
 from escpos.printer import Dummy, Serial
+import base64
 #from escpos import *
 #import locale
 #locale.setlocale( locale.LC_ALL, 'en_US.UTF8' )
