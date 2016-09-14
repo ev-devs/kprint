@@ -205,7 +205,8 @@ def printSpanish(date, guid, city, state, receiptId, leader, cashier, subtotal, 
             p.text(cardStr)
 
             p.set("center")
-            imgData = card[6]
+            imgData = card[7]
+            imgData = imgData
             p.image( imgData.decode('base64') )
 
     if len(Cashes) > 0:
