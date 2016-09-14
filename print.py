@@ -3,8 +3,11 @@ import os
 from escpos.printer import Usb
 from escpos.printer import Dummy, Serial
 #from escpos import *
-import locale
-locale.setlocale( locale.LC_ALL, '' )
+#import locale
+#locale.setlocale( locale.LC_ALL, 'en_US.UTF8' )
+
+#reload(sys)
+#sys.setdefaultencoding('utf8')
 
 Items = []
 Cards = []
@@ -12,14 +15,15 @@ Cashes = []
 
 with open(os.path.dirname(os.path.realpath(__file__)) + "/receipt.txt") as fp:
 
-
     ItemsLoop = False
     CashesLoop = True
     CardsLoop = True
 
 
     for line in fp:
-        # first we need to split it into an array of strings
+        
+	
+	# first we need to split it into an array of strings
         current_line = line.strip().split(',')
 
         if current_line[0] == "date":
@@ -83,8 +87,9 @@ with open(os.path.dirname(os.path.realpath(__file__)) + "/receipt.txt") as fp:
     Cashes = []
 
     for line in fp:
-        current_line = line.strip().split(',')
-        if current_line[0] == "BeginCashes":
+	current_line = line.strip().split(',')
+
+	if current_line[0] == "BeginCashes":
             CashesLoop = True
         if current_line[0] == "EndCashes":
             CashesLoop = False
@@ -112,8 +117,10 @@ def trimQty(str):
         str = str + " "
     return str + "   "
 
-def trimPrice(str):
-    return locale.currency( float(str) )
+def trimPrice(stri):
+    #return str( locale.currency( float(stri) ) 
+    #return stri
+    return '${:,.2f}'.format(float(stri))
 
 def trimBottomRight(str):
     if len(str) < 9:
@@ -176,7 +183,8 @@ def printSpanish(date, guid, city, state, receiptId, leader, cashier, subtotal, 
     #       Items[x][0]              Items[x][1] + " " + Items[x][2] + "\n")
 
     for x in range(len(Items)):
-        p.text( trimName( Items[x][0] )  + trimQty( Items[x][1] ) + trimPrice( Items[x][2] ) + "\n")
+        #print repr(trimPrice[x][2])
+	p.text( u''.join( trimName( Items[x][0] )  + trimQty( Items[x][1] ) + trimPrice( Items[x][2] ) + "\n") )
 
     if len(Cards) > 0:
         p.set("center")

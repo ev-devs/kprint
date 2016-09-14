@@ -1,0 +1,26 @@
+date, Tue Sep 13 2016 23:04:22 GMT+0000 (UTC)
+guid, 8f32fd89-6693-43e1-9250-bba21f605573
+city, WOODRIDGE
+state, IL
+receiptId, 200003807863
+leader, Avertano y Juana  Rendon
+cashier, Firstname Lastname
+subtotal, 21
+tax, 0
+total,21
+payments, 1
+eventType, undefined
+isEnglish, false
+
+
+ItemsBegin
+Patron del Exito (Feb 2016 Cal Cycle) ~ APDE2016-1,3,7
+ItemsEnd
+
+BeginCashes
+EndCashes
+
+BeginCards
+visa,0965,RUELAS/ JUAN              ,L4148E,60007781556,21
+EndCards
+
