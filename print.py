@@ -21,8 +21,8 @@ with open(os.path.dirname(os.path.realpath(__file__)) + "/receipt.txt") as fp:
 
 
     for line in fp:
-        
-	
+
+
 	# first we need to split it into an array of strings
         current_line = line.strip().split(',')
 
@@ -118,7 +118,7 @@ def trimQty(str):
     return str + "   "
 
 def trimPrice(stri):
-    #return str( locale.currency( float(stri) ) 
+    #return str( locale.currency( float(stri) )
     #return stri
     return '${:,.2f}'.format(float(stri))
 
@@ -202,6 +202,10 @@ def printSpanish(date, guid, city, state, receiptId, leader, cashier, subtotal, 
             cardStr = cardStr + "Cantidad               : " + trimPrice( str(card[5]) ) + "\n"
             cardStr = cardStr + "\n"
             p.text(cardStr)
+
+            p.set("center")
+            imgData = card[6]
+            p.image( imgData.decode('base64') )
 
     if len(Cashes) > 0:
         p.set('center')
