@@ -217,7 +217,10 @@ def printSpanish(date, guid, city, state, receiptId, leader, cashier, subtotal, 
             print imgData
             print "\n\n\n\n"
 
-            p.image( imgData.encode('base64') )
+            with open("curr_signature.png", "wb") as fh:
+                fh.write(base64.decodestring(imgData))
+
+            p.image(  os.path.dirname(os.path.realpath(__file__)) + "/curr_signature.png" )
 
     if len(Cashes) > 0:
         p.set('center')
