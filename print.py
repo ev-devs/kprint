@@ -78,8 +78,8 @@ with open(os.path.dirname(os.path.realpath(__file__)) + "/receipt.txt") as fp:
             CashesLoop = False
         if current_line[0] == "EndCards":
 			CardsLoop = False
-        if CardsLoop == True and len(current_line) == 6:
-			Cards.append( (current_line[0], current_line[1], current_line[2], current_line[3], current_line[4], current_line[5] ) )
+        if CardsLoop == True and len(current_line) == 8:
+			Cards.append( (current_line[0], current_line[1], current_line[2], current_line[3], current_line[4], current_line[5], current_line[6], current_line[7] ) )
 fp.close()
 
 with open(os.path.dirname(os.path.realpath(__file__)) + "/receipt.txt") as fp:
