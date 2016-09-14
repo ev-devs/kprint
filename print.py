@@ -3,6 +3,8 @@ import os
 from escpos.printer import Usb
 from escpos.printer import Dummy, Serial
 import base64
+from PIL import Image
+
 #from escpos import *
 #import locale
 #locale.setlocale( locale.LC_ALL, 'en_US.UTF8' )
@@ -204,22 +206,20 @@ def printSpanish(date, guid, city, state, receiptId, leader, cashier, subtotal, 
             cardStr = cardStr + "\n"
             p.text(cardStr)
 
-            p.set("center")
-
-            print "RAW STRING=========="
-            print card[7]
-            print "\n\n\n\n"
 
             imgData = r''.join( card[7].strip().strip("\n") )
             imgData = "%r" % imgData
 
-            print "MODFIED STRING======================"
-            print imgData
-            print "\n\n\n\n"
-
             with open("curr_signature.png", "wb") as fh:
                 fh.write(base64.decodestring(imgData))
 
+            img = Image.open( os.path.dirname(os.path.realpath(__file__)) + "/curr_signature.png")
+            new_width  = 50
+            new_height = 100
+            img = img.resize((new_width, new_height), Image.ANTIALIAS)
+            img.save('curr_signature.png') # format may what u want ,*.png,*jpg,*.gif
+
+            p.set("center")
             p.image(  os.path.dirname(os.path.realpath(__file__)) + "/curr_signature.png" )
 
     if len(Cashes) > 0:
